@@ -1,18 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvliklyktw5wn"]
+[gd_scene load_steps=3 format=3 uid="uid://bs0gowqa8nq8w"]
 
-[ext_resource type="Texture2D" uid="uid://c86jehcpjy7yo" path="res://kenney_shape-characters/kenney_new-platformer-pack-1.0/Sprites/Characters/Default/character_beige_walk_b.png" id="1_wtcfe"]
+[ext_resource type="Texture2D" uid="uid://c86jehcpjy7yo" path="res://kenney_shape-characters/kenney_new-platformer-pack-1.0/Sprites/Characters/Default/character_beige_walk_b.png" id="1_5cknd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0e48y"]
 radius = 45.0
 height = 134.0
 
-[node name="Node2D" type="Node2D"]
+[node name="personaje" type="Node2D"]
 
 [node name="primera tropa" type="CharacterBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="primera tropa"]
 position = Vector2(-4, -19)
-texture = ExtResource("1_wtcfe")
+texture = ExtResource("1_5cknd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="primera tropa"]
 position = Vector2(-3, -4)

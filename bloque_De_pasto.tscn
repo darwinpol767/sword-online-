@@ -1,0 +1,211 @@
+[gd_scene load_steps=14 format=3 uid="uid://w747641nvba0"]
+
+[ext_resource type="Texture2D" uid="uid://cnv8ggqdk5iw1" path="res://kenney_shape-characters/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/terrain_grass_block_top_left.png" id="1_7sobd"]
+[ext_resource type="Texture2D" uid="uid://c5vdbweajucp5" path="res://kenney_shape-characters/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/terrain_grass_block_top.png" id="2_0k5rv"]
+[ext_resource type="Texture2D" uid="uid://xhf7gusu1b5e" path="res://kenney_shape-characters/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/terrain_grass_block_left.png" id="3_gp3sk"]
+[ext_resource type="Texture2D" uid="uid://bdwgxx5h8t5bi" path="res://kenney_shape-characters/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/terrain_grass_block_center.png" id="4_mt1al"]
+[ext_resource type="Texture2D" uid="uid://dsxrgqav1uw03" path="res://kenney_shape-characters/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/bridge_logs.png" id="5_swv8t"]
+[ext_resource type="Texture2D" uid="uid://cigej6yct77vp" path="res://kenney_shape-characters/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/fence.png" id="6_irg1g"]
+[ext_resource type="Texture2D" uid="uid://due7bbrhut7nh" path="res://kenney_shape-characters/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/fence_broken.png" id="7_ve2pk"]
+[ext_resource type="Texture2D" uid="uid://w8ad41mjm5bg" path="res://kenney_shape-characters/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/flag_red_a.png" id="8_o36it"]
+[ext_resource type="Texture2D" uid="uid://hbyhoewe3mcg" path="res://kenney_shape-characters/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/terrain_purple_horizontal_middle.png" id="9_qvtl4"]
+[ext_resource type="Texture2D" uid="uid://dqlsyrbo3lr0p" path="res://kenney_shape-characters/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/terrain_purple_block_top.png" id="10_4m0jg"]
+[ext_resource type="Texture2D" uid="uid://blgbm5a786bww" path="res://kenney_shape-characters/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/terrain_purple_block_center.png" id="11_tmlqq"]
+[ext_resource type="Texture2D" uid="uid://dsek6idrjfnos" path="res://kenney_shape-characters/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/flag_blue_b.png" id="12_8lg30"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82ou4"]
+size = Vector2(1249, 123.316)
+
+[node name="piso" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(593.5, 60.3421)
+shape = SubResource("RectangleShape2D_82ou4")
+
+[node name="TerrainGrassBlock" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(0, 27)
+texture = ExtResource("1_7sobd")
+
+[node name="TerrainGrassBlockTop2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(126, 27)
+texture = ExtResource("2_0k5rv")
+
+[node name="TerrainGrassBlockCenter" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(64, 90)
+texture = ExtResource("4_mt1al")
+
+[node name="TerrainGrassBlockLeft" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(0, 90)
+texture = ExtResource("3_gp3sk")
+
+[node name="TerrainGrassBlockTop3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(190, 27)
+texture = ExtResource("2_0k5rv")
+
+[node name="TerrainGrassBlockCenter3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(190, 90)
+texture = ExtResource("4_mt1al")
+
+[node name="TerrainGrassBlockCenter2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(128, 90)
+texture = ExtResource("4_mt1al")
+
+[node name="TerrainGrassBlockTop" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(63, 27)
+texture = ExtResource("2_0k5rv")
+
+[node name="TerrainGrassBlockTop6" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(382, 27)
+texture = ExtResource("2_0k5rv")
+
+[node name="TerrainGrassBlockCenter6" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(382, 91)
+texture = ExtResource("4_mt1al")
+
+[node name="BridgeLogs" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(507, 24)
+texture = ExtResource("5_swv8t")
+
+[node name="TerrainGrassBlockCenter7" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(447, 91)
+texture = ExtResource("4_mt1al")
+
+[node name="BridgeLogs2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(567, 25)
+texture = ExtResource("5_swv8t")
+
+[node name="FenceBroken" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(567, -35)
+texture = ExtResource("7_ve2pk")
+
+[node name="FlagRedA" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(509, -69)
+rotation = 0.0311944
+texture = ExtResource("8_o36it")
+
+[node name="TerrainPurpleBlockCenter12" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1174, 61)
+texture = ExtResource("11_tmlqq")
+
+[node name="TerrainPurpleBlockTop4" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1118, 28)
+texture = ExtResource("10_4m0jg")
+
+[node name="FlagBlueB" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(733, -66)
+rotation = 0.0110064
+texture = ExtResource("12_8lg30")
+
+[node name="BridgeLogs3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(627, 25)
+texture = ExtResource("5_swv8t")
+
+[node name="TerrainPurpleHorizontalMiddle2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(817, 29)
+texture = ExtResource("9_qvtl4")
+
+[node name="BridgeLogs4" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(688, 25)
+texture = ExtResource("5_swv8t")
+
+[node name="Fence" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(507, -36)
+texture = ExtResource("6_irg1g")
+
+[node name="Fence2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(690, -35)
+texture = ExtResource("6_irg1g")
+
+[node name="TerrainPurpleHorizontalMiddle3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(860, 29)
+texture = ExtResource("9_qvtl4")
+
+[node name="TerrainPurpleBlockTop2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(989, 27)
+texture = ExtResource("10_4m0jg")
+
+[node name="TerrainPurpleBlockTop3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1054, 28)
+texture = ExtResource("10_4m0jg")
+
+[node name="TerrainPurpleBlockCenter" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(752, 88)
+texture = ExtResource("11_tmlqq")
+
+[node name="TerrainPurpleBlockCenter11" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(938, 57)
+texture = ExtResource("11_tmlqq")
+
+[node name="TerrainPurpleBlockCenter8" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1184, 93)
+rotation = -0.0131731
+scale = Vector2(1, 1)
+texture = ExtResource("11_tmlqq")
+
+[node name="TerrainPurpleBlockTop5" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1184, 27)
+texture = ExtResource("10_4m0jg")
+
+[node name="TerrainPurpleBlockCenter9" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(843, 86)
+texture = ExtResource("11_tmlqq")
+
+[node name="TerrainPurpleBlockCenter3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(883, 86)
+texture = ExtResource("11_tmlqq")
+
+[node name="TerrainPurpleBlockCenter6" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1078, 93)
+texture = ExtResource("11_tmlqq")
+
+[node name="TerrainPurpleBlockCenter7" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1142, 93)
+texture = ExtResource("11_tmlqq")
+
+[node name="TerrainPurpleBlockCenter5" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1013, 90)
+rotation = -0.016832
+scale = Vector2(1, 1)
+texture = ExtResource("11_tmlqq")
+
+[node name="TerrainPurpleBlockCenter2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(817, 86)
+texture = ExtResource("11_tmlqq")
+
+[node name="TerrainPurpleBlockCenter4" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(949, 88)
+texture = ExtResource("11_tmlqq")
+
+[node name="TerrainPurpleHorizontalMiddle" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(752, 29)
+texture = ExtResource("9_qvtl4")
+
+[node name="TerrainPurpleBlockTop" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(923, 25)
+texture = ExtResource("10_4m0jg")
+
+[node name="TerrainGrassBlockCenter4" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(253, 90)
+texture = ExtResource("4_mt1al")
+
+[node name="TerrainGrassBlockCenter5" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(317, 91)
+texture = ExtResource("4_mt1al")
+
+[node name="TerrainPurpleBlockCenter10" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(923, 85)
+texture = ExtResource("11_tmlqq")
+
+[node name="TerrainGrassBlockTop5" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(318, 27)
+texture = ExtResource("2_0k5rv")
+
+[node name="TerrainGrassBlockTop4" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(254, 27)
+texture = ExtResource("2_0k5rv")
+
+[node name="TerrainGrassBlockTop7" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(446, 27)
+texture = ExtResource("2_0k5rv")

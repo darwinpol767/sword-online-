@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://m77u3fdsvjk0"]
+
+[ext_resource type="PackedScene" uid="uid://barfqhujcret1" path="res://castillo1.tscn" id="1_dnco0"]
+[ext_resource type="PackedScene" uid="uid://w747641nvba0" path="res://bloque_De_pasto.tscn" id="2_nc7mg"]
+[ext_resource type="PackedScene" uid="uid://bgqvu0bfncdmc" path="res://juego/personaje1.tscn" id="3_iwl05"]
+
+[node name="Node2D" instance=ExtResource("1_dnco0")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-837, -385)
+
+[node name="TerrainStoneBlockTop3" parent="." index="3"]
+position = Vector2(-741, -194)
+
+[node name="TerrainStoneBlockLeft" parent="." index="8"]
+position = Vector2(-659, -152)
+
+[node name="TerrainStoneBlockCenter2" parent="." index="10"]
+position = Vector2(-663, -85)
+
+[node name="TerrainStoneBlockCenter5" parent="." index="13"]
+position = Vector2(-831, -253)
+
+[node name="TerrainStoneBlockCenter7" parent="." index="15"]
+position = Vector2(-838, -71)
+
+[node name="DoorClosedTop" parent="." index="18"]
+position = Vector2(-715, -413)
+
+[node name="TerrainStoneBlockBottomLeft" parent="." index="19"]
+position = Vector2(-631, -223)
+
+[node name="TerrainStoneBlockBottomRight" parent="." index="20"]
+position = Vector2(-640, -379)
+
+[node name="TerrainStoneBlockLeft2" parent="." index="21"]
+position = Vector2(-590, -372)
+
+[node name="TerrainStoneBlockRight2" parent="." index="22"]
+position = Vector2(-860, -539)
+
+[node name="TerrainStoneBlockCenter10" parent="." index="23"]
+position = Vector2(-767, -335)
+
+[node name="TerrainStoneBlockTopLeft2" parent="." index="25"]
+position = Vector2(171, -529)
+offset = Vector2(-902, 196)
+
+[node name="Node2D" parent="TerrainStoneBlockTopLeft2" index="0" instance=ExtResource("1_dnco0")]
+position = Vector2(22, 1042)
+
+[node name="piso" parent="TerrainStoneBlockTopLeft2" index="1" instance=ExtResource("2_nc7mg")]
+position = Vector2(247, 1051)
+
+[node name="Window" parent="." index="28"]
+position = Vector2(-810, -223)
+
+[node name="personaje" parent="." index="32" instance=ExtResource("3_iwl05")]
+position = Vector2(585, 466)

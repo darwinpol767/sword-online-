@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://baxgdcqy5a7en"]
+
+[ext_resource type="PackedScene" uid="uid://w747641nvba0" path="res://bloque_De_pasto.tscn" id="1_nukke"]
+[ext_resource type="PackedScene" uid="uid://barfqhujcret1" path="res://castillo1.tscn" id="2_nnr1w"]
+[ext_resource type="PackedScene" uid="uid://bs0gowqa8nq8w" path="res://personaje1.tscn" id="3_wfwli"]
+
+[node name="piso" instance=ExtResource("1_nukke")]
+
+[node name="Node2D" parent="StaticBody2D" index="2" instance=ExtResource("2_nnr1w")]
+position = Vector2(-221, -4)
+
+[node name="personaje" parent="StaticBody2D" index="3" instance=ExtResource("3_wfwli")]
+position = Vector2(286, -63)
