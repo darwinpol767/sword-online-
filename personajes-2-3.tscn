@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce72tjujuc1bl"]
+
+[ext_resource type="Texture2D" uid="uid://cba5l7q30so7g" path="res://kenney_shape-characters/kenney_new-platformer-pack-1.0/Sprites/Characters/Default/character_pink_walk_b.png" id="1_kh6w8"]
+[ext_resource type="Texture2D" uid="uid://cdlfiscqaioet" path="res://kenney_shape-characters/kenney_new-platformer-pack-1.0/Sprites/Characters/Default/character_beige_idle.png" id="2_dntyq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7orlh"]
+radius = 49.366
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bafvx"]
+radius = 48.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="personaje 2" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="personaje 2"]
+position = Vector2(0, 13)
+shape = SubResource("CircleShape2D_7orlh")
+
+[node name="Sprite2D" type="Sprite2D" parent="personaje 2"]
+texture = ExtResource("1_kh6w8")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(139, 0)
+texture = ExtResource("2_dntyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(139, 16)
+shape = SubResource("CircleShape2D_bafvx")

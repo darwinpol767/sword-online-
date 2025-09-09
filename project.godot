@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="primer juego"
-run/main_scene="res://juego/tengo_Fe.tscn"
+config/description="jueguito"
+run/main_scene="uid://b1a1pks2q6t28"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[dotnet]
+
+project/assembly_name="primer juego"
 
 [rendering]
 
