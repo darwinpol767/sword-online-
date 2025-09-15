@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://dynr7rj8y671a"]
+
+[ext_resource type="PackedScene" uid="uid://cf2svr8oar330" path="res://estructuras/enemigo_3.tscn" id="1_hcov6"]
+[ext_resource type="PackedScene" uid="uid://byv7jor5jv8xn" path="res://estructuras/bloque.tscn" id="2_bv282"]
+[ext_resource type="PackedScene" uid="uid://cyt28d27x8jfn" path="res://estructuras/coete enemigo.tscn" id="3_dpv13"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="coete alaido" parent="." instance=ExtResource("1_hcov6")]
+position = Vector2(140, 200)
+
+[node name="bloque" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(63, 503)
+
+[node name="bloque2" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(190, 503)
+
+[node name="bloque3" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(316, 505)
+
+[node name="bloque4" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(444, 505)
+
+[node name="bloque5" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(569, 503)
+
+[node name="bloque6" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(693, 503)
+
+[node name="bloque7" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(820, 504)
+
+[node name="bloque8" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(945, 506)
+
+[node name="bloque9" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(1074, 504)
+
+[node name="bloque10" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(1202, 506)
+
+[node name="bloque11" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(1333, 504)
+
+[node name="bloque12" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(1457, 506)
+
+[node name="bloque13" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(1586, 502)
+
+[node name="bloque14" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(1714, 500)
+
+[node name="bloque15" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(1843, 502)
+
+[node name="bloque16" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(1974, 502)
+
+[node name="Node2D" parent="." instance=ExtResource("3_dpv13")]
+position = Vector2(2253, 173)
+
+[node name="bloque17" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(2105, 502)
+
+[node name="bloque18" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(2231, 518)
+
+[node name="bloque19" parent="." instance=ExtResource("2_bv282")]
+position = Vector2(2358, 518)

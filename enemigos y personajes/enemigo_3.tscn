@@ -1,0 +1,146 @@
+[gd_scene load_steps=11 format=3 uid="uid://nvmvrru1q0e3"]
+
+[ext_resource type="Texture2D" uid="uid://bu1lw3f8fpig6" path="res://kenney_shape-characters/PNG/Default/yellow_body_squircle.png" id="1_ohl5d"]
+[ext_resource type="Texture2D" uid="uid://dcfpomvhjka0w" path="res://kenney_shape-characters/PNG/Default/face_b.png" id="2_l8e51"]
+[ext_resource type="Texture2D" uid="uid://cos7q1mv61ttt" path="res://kenney_shape-characters/PNG/Default/hand_yellow_closed.png" id="3_v1dp6"]
+[ext_resource type="Texture2D" uid="uid://dr3p0vlrw2jl4" path="res://kenney_platformer-art-requests/Tiles/shieldSilver.png" id="4_4tat7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0opad"]
+size = Vector2(147, 132)
+
+[sub_resource type="Animation" id="Animation_7kuar"]
+resource_name = "ataque"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/HandYellowClosed:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.533333, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-75, -7), Vector2(-151, -11), Vector2(-81, -3)]
+}
+
+[sub_resource type="Animation" id="Animation_yuhvl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/HandYellowClosed:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-75, -7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_br8br"]
+resource_name = "caminata"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/HandYellowClosed:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.766667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-75, -7), Vector2(-153, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.766667, 0.766767),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_j53qx"]
+resource_name = "muerte"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, 72)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/HandYellowClosed:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-75, -7), Vector2(-119, 139)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_utd1o"]
+_data = {
+&"RESET": SubResource("Animation_yuhvl"),
+&"ataque": SubResource("Animation_7kuar"),
+&"caminata": SubResource("Animation_br8br"),
+&"muerte": SubResource("Animation_j53qx")
+}
+
+[node name="enemigo 3" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-11, 98)
+scale = Vector2(1.8625, 1.6625)
+texture = ExtResource("1_ohl5d")
+
+[node name="FaceB" type="Sprite2D" parent="CharacterBody2D/Sprite2D"]
+position = Vector2(-1.47651, -0.451128)
+scale = Vector2(1.19732, 1.76692)
+texture = ExtResource("2_l8e51")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+visible = false
+position = Vector2(-1, 3)
+shape = SubResource("RectangleShape2D_0opad")
+
+[node name="HandYellowClosed" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-75, -7)
+texture = ExtResource("3_v1dp6")
+
+[node name="ShieldSilver" type="Sprite2D" parent="CharacterBody2D/HandYellowClosed"]
+position = Vector2(-21, 39)
+scale = Vector2(1.92857, 1.75714)
+texture = ExtResource("4_4tat7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_utd1o")
+}

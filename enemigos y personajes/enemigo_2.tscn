@@ -1,0 +1,153 @@
+[gd_scene load_steps=11 format=3 uid="uid://okr00apaexp5"]
+
+[ext_resource type="Texture2D" uid="uid://cxu8277thotv3" path="res://kenney_shape-characters/PNG/Default/green_body_rhombus.png" id="1_xchu5"]
+[ext_resource type="Texture2D" uid="uid://c6icvq731aq16" path="res://kenney_shape-characters/PNG/Default/face_e.png" id="2_6e7i7"]
+[ext_resource type="Texture2D" uid="uid://beqrpcpescqp4" path="res://kenney_shape-characters/PNG/Default/green_hand_point.png" id="3_tt5vg"]
+[ext_resource type="Texture2D" uid="uid://ch240du5cxb4c" path="res://kenney_platformer-art-requests/Tiles/raygunPurple.png" id="4_veq0p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ycnu"]
+size = Vector2(81.4679, 79.4579)
+
+[sub_resource type="Animation" id="Animation_0mwvo"]
+resource_name = "muerte"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/GreenHandPoint2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-101.462, 4.3718), Vector2(-100, 137)]
+}
+
+[sub_resource type="Animation" id="Animation_njf38"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/GreenHandPoint2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-101.462, 4.3718)]
+}
+
+[sub_resource type="Animation" id="Animation_pr3bl"]
+resource_name = "camina"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.866667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-20, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/GreenHandPoint2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.866667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-101.462, 4.3718), Vector2(-162, -1.18017e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_vbfd7"]
+resource_name = "ataque"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/GreenHandPoint2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.533333, 1.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-101.462, 4.3718), Vector2(-151, 12), Vector2(-104, 12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e3b6o"]
+_data = {
+&"RESET": SubResource("Animation_njf38"),
+&"ataque": SubResource("Animation_vbfd7"),
+&"camina": SubResource("Animation_pr3bl"),
+&"muerte": SubResource("Animation_0mwvo")
+}
+
+[node name="enemigo 2" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+visible = false
+position = Vector2(-1.5, 1.5)
+scale = Vector2(1.3625, 1.37179)
+shape = SubResource("RectangleShape2D_3ycnu")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-2.00002, 1)
+scale = Vector2(1.3625, 1.3375)
+texture = ExtResource("1_xchu5")
+
+[node name="FaceE" type="Sprite2D" parent="CharacterBody2D/Sprite2D"]
+position = Vector2(-0.733945, -0.747664)
+scale = Vector2(1, 1.02564)
+texture = ExtResource("2_6e7i7")
+
+[node name="GreenHandPoint2" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-101.462, 4.3718)
+rotation = 2.44169
+scale = Vector2(1.36633, -1.37133)
+skew = 0.00669169
+texture = ExtResource("3_tt5vg")
+
+[node name="RaygunPurple" type="Sprite2D" parent="CharacterBody2D/GreenHandPoint2"]
+show_behind_parent = true
+position = Vector2(-6.10702, -28.5076)
+rotation = -0.909809
+scale = Vector2(1.95777, 1.73564)
+texture = ExtResource("4_veq0p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_e3b6o")
+}

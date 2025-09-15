@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://byv7jor5jv8xn"]
+
+[ext_resource type="Texture2D" uid="uid://bp6jjsitmn06q" path="res://kenney_new-platformer-pack-1.0/Sprites/Tiles/Double/terrain_sand_block_top.png" id="1_ceogj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tw5s7"]
+size = Vector2(126, 104.5)
+
+[node name="bloque" type="Node2D"]
+
+[node name="TerrainSandBlockTop" type="Sprite2D" parent="."]
+texture = ExtResource("1_ceogj")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TerrainSandBlockTop"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TerrainSandBlockTop/StaticBody2D"]
+position = Vector2(0, -9.75)
+shape = SubResource("RectangleShape2D_tw5s7")
