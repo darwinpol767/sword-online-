@@ -1,27 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://nvmvrru1q0e3"]
+[gd_scene load_steps=13 format=3 uid="uid://nvmvrru1q0e3"]
 
-[ext_resource type="Texture2D" uid="uid://bu1lw3f8fpig6" path="res://kenney_shape-characters/PNG/Default/yellow_body_squircle.png" id="1_ohl5d"]
-[ext_resource type="Texture2D" uid="uid://dcfpomvhjka0w" path="res://kenney_shape-characters/PNG/Default/face_b.png" id="2_l8e51"]
-[ext_resource type="Texture2D" uid="uid://cos7q1mv61ttt" path="res://kenney_shape-characters/PNG/Default/hand_yellow_closed.png" id="3_v1dp6"]
+[ext_resource type="Script" uid="uid://cksde1en24mq7" path="res://cosas de darwin/enemigos y personajes/enemigo3.gd" id="1_ceu2b"]
+[ext_resource type="Texture2D" uid="uid://7c26q4wjkkpc" path="res://kenney_shape-characters/PNG/Default/yellow_body_squircle.png" id="1_ohl5d"]
+[ext_resource type="Texture2D" uid="uid://dmr5rpbk7syn0" path="res://kenney_shape-characters/PNG/Default/face_b.png" id="2_l8e51"]
+[ext_resource type="Texture2D" uid="uid://chswrls5jjhh6" path="res://kenney_shape-characters/PNG/Default/hand_yellow_closed.png" id="3_v1dp6"]
 [ext_resource type="Texture2D" uid="uid://dr3p0vlrw2jl4" path="res://kenney_platformer-art-requests/Tiles/shieldSilver.png" id="4_4tat7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0opad"]
 size = Vector2(147, 132)
 
-[sub_resource type="Animation" id="Animation_7kuar"]
-resource_name = "ataque"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D/HandYellowClosed:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 0.533333, 0.933333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-75, -7), Vector2(-151, -11), Vector2(-81, -3)]
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvddg"]
+size = Vector2(274, 136)
 
 [sub_resource type="Animation" id="Animation_yuhvl"]
 length = 0.001
@@ -48,6 +37,21 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7kuar"]
+resource_name = "ataque"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/HandYellowClosed:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.533333, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-75, -7), Vector2(-151, -11), Vector2(-81, -3)]
 }
 
 [sub_resource type="Animation" id="Animation_br8br"]
@@ -114,10 +118,12 @@ _data = {
 
 [node name="enemigo 3" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["enemigos"]]
+collision_mask = 2
+script = ExtResource("1_ceu2b")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(-11, 98)
+position = Vector2(-1.90735e-06, -0.999992)
 scale = Vector2(1.8625, 1.6625)
 texture = ExtResource("1_ohl5d")
 
@@ -127,7 +133,6 @@ scale = Vector2(1.19732, 1.76692)
 texture = ExtResource("2_l8e51")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-visible = false
 position = Vector2(-1, 3)
 shape = SubResource("RectangleShape2D_0opad")
 
@@ -139,6 +144,12 @@ texture = ExtResource("3_v1dp6")
 position = Vector2(-21, 39)
 scale = Vector2(1.92857, 1.75714)
 texture = ExtResource("4_4tat7")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(-64, 3)
+shape = SubResource("RectangleShape2D_mvddg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

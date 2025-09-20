@@ -1,34 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://db680mu8qmqgc"]
+[gd_scene load_steps=12 format=3 uid="uid://db680mu8qmqgc"]
 
 [ext_resource type="Texture2D" uid="uid://cfjjclhoptuya" path="res://kenney_scribble-platformer/PNG/Retina/character_squareYellow.png" id="1_et0ek"]
+[ext_resource type="Script" uid="uid://c4o6k6hvicgsa" path="res://cosas de darwin/enemigos y personajes/personaje_1.gd" id="1_mcpxs"]
 [ext_resource type="Texture2D" uid="uid://c5lr4nkrc5oe7" path="res://kenney_scribble-platformer/PNG/Default/character_handYellow.png" id="2_wifnp"]
 [ext_resource type="Texture2D" uid="uid://meicb6o1cc76" path="res://kenney_platformer-art-requests/Tiles/swordGold.png" id="3_oxcyn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0uqp6"]
 size = Vector2(76, 120)
 
-[sub_resource type="Animation" id="Animation_et0ek"]
-resource_name = "caminata"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6, 1.16667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(6, 0), Vector2(70, -30), Vector2(120, 0)]
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r276b"]
+size = Vector2(157, 119)
 
 [sub_resource type="Animation" id="Animation_wifnp"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D:position")
+tracks/0/path = NodePath("personaje1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -40,7 +28,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterBody2D/Sprite2D/CharacterHandYellow:position")
+tracks/1/path = NodePath("personaje1/Sprite2D/CharacterHandYellow:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -57,7 +45,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D/Sprite2D/CharacterHandYellow:position")
+tracks/0/path = NodePath("personaje1/Sprite2D/CharacterHandYellow:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -67,13 +55,29 @@ tracks/0/keys = {
 "values": [Vector2(49, 9), Vector2(70, 10), Vector2(80, 2), Vector2(85, 20)]
 }
 
+[sub_resource type="Animation" id="Animation_et0ek"]
+resource_name = "caminata"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("personaje1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(6, 0), Vector2(70, -30), Vector2(120, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_0uqp6"]
 resource_name = "muerte"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D:position")
+tracks/0/path = NodePath("personaje1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -92,34 +96,43 @@ _data = {
 }
 
 [node name="personaje" type="Node2D"]
-position = Vector2(-7, 3)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="personaje1" type="CharacterBody2D" parent="." groups=["compañeros"]]
 position = Vector2(6, 0)
+collision_mask = 2
+up_direction = Vector2(0, 1)
+slide_on_ceiling = false
+script = ExtResource("1_mcpxs")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="personaje1"]
 position = Vector2(-6, 1)
 texture = ExtResource("1_et0ek")
 
-[node name="CharacterHandYellow" type="Sprite2D" parent="CharacterBody2D/Sprite2D"]
+[node name="CharacterHandYellow" type="Sprite2D" parent="personaje1/Sprite2D"]
 position = Vector2(60, 9)
 rotation = 0.5366
 scale = Vector2(1.45977, 1.57143)
 texture = ExtResource("2_wifnp")
 
-[node name="SwordGold" type="Sprite2D" parent="CharacterBody2D/Sprite2D/CharacterHandYellow"]
+[node name="SwordGold" type="Sprite2D" parent="personaje1/Sprite2D/CharacterHandYellow"]
 show_behind_parent = true
 position = Vector2(8.90551, -21.6364)
 rotation = 0.338501
 scale = Vector2(0.685039, 0.772423)
 texture = ExtResource("3_oxcyn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-visible = false
-position = Vector2(1, -1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="personaje1"]
+position = Vector2(-6, -1)
 shape = SubResource("RectangleShape2D_0uqp6")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Area2D" type="Area2D" parent="personaje1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="personaje1/Area2D"]
+position = Vector2(35.5, -0.5)
+shape = SubResource("RectangleShape2D_r276b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="personaje1"]
+root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_3lblv")
 }

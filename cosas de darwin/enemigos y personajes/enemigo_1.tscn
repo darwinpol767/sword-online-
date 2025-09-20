@@ -1,39 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6n5uk4td2dfu"]
+[gd_scene load_steps=13 format=3 uid="uid://c6n5uk4td2dfu"]
 
-[ext_resource type="Texture2D" uid="uid://debf5m06ttpmv" path="res://kenney_shape-characters/PNG/Default/red_body_circle.png" id="1_hhhhn"]
-[ext_resource type="Texture2D" uid="uid://bqsg07oqm17mx" path="res://kenney_shape-characters/PNG/Default/face_g.png" id="2_q4ose"]
-[ext_resource type="Texture2D" uid="uid://c1phwytprqpsq" path="res://kenney_shape-characters/PNG/Default/red_hand_closed.png" id="3_ypm1p"]
+[ext_resource type="Script" uid="uid://dy6f5nix0s5mx" path="res://cosas de darwin/enemigos y personajes/enemigo1.gd" id="1_0mhqo"]
+[ext_resource type="Texture2D" uid="uid://jr0qgw1641cm" path="res://kenney_shape-characters/PNG/Default/red_body_circle.png" id="1_hhhhn"]
+[ext_resource type="Texture2D" uid="uid://dtf1ou7el8jxc" path="res://kenney_shape-characters/PNG/Default/face_g.png" id="2_q4ose"]
+[ext_resource type="Texture2D" uid="uid://bpapfm5vca2s0" path="res://kenney_shape-characters/PNG/Default/red_hand_closed.png" id="3_ypm1p"]
 [ext_resource type="Texture2D" uid="uid://dj6ie8bjd1uw" path="res://kenney_platformer-art-requests/Tiles/swordSilver.png" id="4_hdh4k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xs68i"]
-size = Vector2(78, 81)
+size = Vector2(98, 93)
 
-[sub_resource type="Animation" id="Animation_xplbs"]
-resource_name = "caminata"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.833333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-47, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterBody2D/RedHandClosed:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.866667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-55, 13), Vector2(-117, 13)]
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyf2l"]
+size = Vector2(156, 94)
 
 [sub_resource type="Animation" id="Animation_e0106"]
 length = 0.001
@@ -60,6 +37,48 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-55, 13)]
+}
+
+[sub_resource type="Animation" id="Animation_kq1hf"]
+resource_name = "ataque"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/RedHandClosed:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-79, 2), Vector2(-84, 46), Vector2(-116, 20)]
+}
+
+[sub_resource type="Animation" id="Animation_xplbs"]
+resource_name = "caminata"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-47, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/RedHandClosed:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.866667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-55, 13), Vector2(-117, 13)]
 }
 
 [sub_resource type="Animation" id="Animation_qr5mc"]
@@ -89,21 +108,6 @@ tracks/1/keys = {
 "values": [Vector2(0, 0), Vector2(0, -40)]
 }
 
-[sub_resource type="Animation" id="Animation_kq1hf"]
-resource_name = "ataque"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D/RedHandClosed:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.966667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-79, 2), Vector2(-84, 46), Vector2(-116, 20)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j8qn6"]
 _data = {
 &"RESET": SubResource("Animation_e0106"),
@@ -114,7 +118,9 @@ _data = {
 
 [node name="enemigo1" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["enemigos"]]
+collision_mask = 2
+script = ExtResource("1_0mhqo")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(-2, 1)
@@ -127,7 +133,6 @@ scale = Vector2(1.08333, 1.19565)
 texture = ExtResource("2_q4ose")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-visible = false
 position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_xs68i")
 
@@ -142,6 +147,12 @@ position = Vector2(-44.3864, -1.35965)
 rotation = -1.52389
 scale = Vector2(1.33763, 1.32987)
 texture = ExtResource("4_hdh4k")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(-31, 0)
+shape = SubResource("RectangleShape2D_iyf2l")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

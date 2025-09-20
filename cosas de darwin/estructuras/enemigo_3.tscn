@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cf2svr8oar330"]
+[gd_scene load_steps=19 format=3 uid="uid://cf2svr8oar330"]
 
 [ext_resource type="Texture2D" uid="uid://c41t7e1vi5g7r" path="res://kenney_new-platformer-pack-1.0/Vector/Tiles/lock_blue.svg" id="1_jekqs"]
 [ext_resource type="Texture2D" uid="uid://bb8xf2lvddo82" path="res://kenney_platformer-art-requests/Tiles/metalCenterSticker.png" id="2_wcvul"]
@@ -18,20 +18,57 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_orshr"]
 size = Vector2(243.726, 364.373)
 
+[sub_resource type="Animation" id="Animation_sin8s"]
+resource_name = "destruccion"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3, 0.466667, 0.733333, 1, 1.36667, 1.6, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-3, -97), Vector2(-42, -92), Vector2(87, -88), Vector2(-65, -54), Vector2(93, -11), Vector2(-109, 76), Vector2(141, 117), Vector2(-116, 191), Vector2(-8.00001, 317)]
+}
+
+[sub_resource type="Animation" id="Animation_watp7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -97)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7bvqr"]
+_data = {
+&"RESET": SubResource("Animation_watp7"),
+&"destruccion": SubResource("Animation_sin8s")
+}
+
 [node name="coete alaido" type="Node2D"]
 
 [node name="LockBlue" type="Sprite2D" parent="."]
-position = Vector2(0.5, -70.5)
+position = Vector2(-3, -97)
 scale = Vector2(1.14063, 1.17188)
 texture = ExtResource("1_jekqs")
 
 [node name="MetalCenterSticker" type="Sprite2D" parent="LockBlue"]
-position = Vector2(-0.438356, 60.16)
+position = Vector2(6.5728e-06, 60.5864)
 scale = Vector2(0.876712, 0.853333)
 texture = ExtResource("2_wcvul")
 
 [node name="MetalCenter" type="Sprite2D" parent="LockBlue"]
-position = Vector2(0.438356, 119.04)
+position = Vector2(-2.63012, 118.613)
 scale = Vector2(0.876712, 0.853333)
 texture = ExtResource("3_ycnbv")
 
@@ -76,7 +113,7 @@ scale = Vector2(0.876712, 0.853333)
 texture = ExtResource("3_ycnbv")
 
 [node name="ShieldGold4" type="Sprite2D" parent="LockBlue"]
-position = Vector2(10.0822, 81.4933)
+position = Vector2(10.5205, 80.213)
 scale = Vector2(0.876712, 0.853333)
 texture = ExtResource("4_8j53x")
 
@@ -200,6 +237,10 @@ texture = ExtResource("5_tf7it")
 [node name="StaticBody2D" type="StaticBody2D" parent="LockBlue"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LockBlue/StaticBody2D"]
-position = Vector2(0.438353, 72.5333)
-scale = Vector2(1, 1)
+position = Vector2(-1.31506, 77.2263)
 shape = SubResource("RectangleShape2D_orshr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LockBlue"]
+libraries = {
+&"": SubResource("AnimationLibrary_7bvqr")
+}

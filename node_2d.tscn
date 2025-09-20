@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvliklyktw5wn"]
+
+[ext_resource type="Script" uid="uid://cbmdexd6n0cux" path="res://scripts/main.gd" id="1_wtcfe"]
+[ext_resource type="PackedScene" uid="uid://w747641nvba0" path="res://Bases/bloque_De_pasto.tscn" id="2_0e48y"]
+
+[node name="Escena principal" type="Node2D"]
+script = ExtResource("1_wtcfe")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(7, -2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer"]
+anchors_preset = -1
+anchor_top = -0.083
+anchor_bottom = -0.083
+offset_left = 121.0
+offset_top = -253.216
+offset_right = 523.0
+offset_bottom = -184.216
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "Oro:"
+
+[node name="oro" type="Label" parent="Camera2D/CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "00"
+
+[node name="Button" type="Button" parent="Camera2D/CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "Mele 75"
+
+[node name="Button2" type="Button" parent="Camera2D/CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "Range 100"
+
+[node name="Button3" type="Button" parent="Camera2D/CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "Tank 150"
+
+[node name="spawnpoint" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="spawnpoint"]
+
+[node name="Marker2D2" type="Marker2D" parent="spawnpoint"]
+position = Vector2(1, 0)
+
+[node name="piso" parent="." instance=ExtResource("2_0e48y")]
+position = Vector2(12, 507)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://v2vqxkts2bhu"]
+[gd_scene load_steps=12 format=3 uid="uid://v2vqxkts2bhu"]
 
+[ext_resource type="Script" uid="uid://c5qbe3ykkxh07" path="res://cosas de darwin/enemigos y personajes/character_body_2d.gd" id="1_5xsok"]
 [ext_resource type="Texture2D" uid="uid://d0xcr2ud7inj8" path="res://kenney_scribble-platformer/PNG/Default/character_squareGreen.png" id="1_lgwjo"]
 [ext_resource type="Texture2D" uid="uid://cqsug8xhwby50" path="res://kenney_scribble-platformer/PNG/Default/character_handGreen.png" id="2_1xcl2"]
 [ext_resource type="Texture2D" uid="uid://ch240du5cxb4c" path="res://kenney_platformer-art-requests/Tiles/raygunPurple.png" id="3_wbat1"]
@@ -7,28 +8,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8wci"]
 size = Vector2(60, 103)
 
-[sub_resource type="Animation" id="Animation_lhnpx"]
-resource_name = "movimiento"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 0.7, 1.46667, 1.96667),
-"transitions": PackedFloat32Array(0.574349, 0.517632, 0.63728, 2.37841),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(34, 30), Vector2(120, -22), Vector2(173, 2)]
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xsok"]
+size = Vector2(220, 103)
 
 [sub_resource type="Animation" id="Animation_52q18"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D:position")
+tracks/0/path = NodePath("personaje2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -40,7 +28,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterBody2D/CharacterSquareGreen/CharacterHandGreen:position")
+tracks/1/path = NodePath("personaje2/CharacterSquareGreen/CharacterHandGreen:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -56,7 +44,7 @@ length = 1.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D/CharacterSquareGreen/CharacterHandGreen:position")
+tracks/0/path = NodePath("personaje2/CharacterSquareGreen/CharacterHandGreen:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -66,12 +54,28 @@ tracks/0/keys = {
 "values": [Vector2(31.0345, 0), Vector2(46.5527, 1.11111), Vector2(25.3388, 2.22222)]
 }
 
+[sub_resource type="Animation" id="Animation_lhnpx"]
+resource_name = "movimiento"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("personaje2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.7, 1.46667, 1.96667),
+"transitions": PackedFloat32Array(0.574349, 0.517632, 0.63728, 2.37841),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(34, 30), Vector2(120, -22), Vector2(173, 2)]
+}
+
 [sub_resource type="Animation" id="Animation_6myq8"]
 resource_name = "muerte"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D:position")
+tracks/0/path = NodePath("personaje2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -91,27 +95,35 @@ _data = {
 
 [node name="personaje2" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="personaje2" type="CharacterBody2D" parent="." groups=["compañeros"]]
+collision_mask = 2
+script = ExtResource("1_5xsok")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="personaje2"]
 visible = false
 position = Vector2(1, -1.5)
 shape = SubResource("RectangleShape2D_v8wci")
 
-[node name="CharacterSquareGreen" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(-83, 39)
+[node name="CharacterSquareGreen" type="Sprite2D" parent="personaje2"]
 scale = Vector2(1.697, 1.8)
 texture = ExtResource("1_lgwjo")
 
-[node name="CharacterHandGreen" type="Sprite2D" parent="CharacterBody2D/CharacterSquareGreen"]
+[node name="CharacterHandGreen" type="Sprite2D" parent="personaje2/CharacterSquareGreen"]
 position = Vector2(31.0345, 0)
 texture = ExtResource("2_1xcl2")
 
-[node name="RaygunPurple" type="Sprite2D" parent="CharacterBody2D/CharacterSquareGreen/CharacterHandGreen"]
+[node name="RaygunPurple" type="Sprite2D" parent="personaje2/CharacterSquareGreen/CharacterHandGreen"]
 position = Vector2(13.1034, -7.42857)
 texture = ExtResource("3_wbat1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Area2D" type="Area2D" parent="personaje2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="personaje2/Area2D"]
+position = Vector2(80, -3.5)
+shape = SubResource("RectangleShape2D_5xsok")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="personaje2"]
+root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_xdofj")
 }

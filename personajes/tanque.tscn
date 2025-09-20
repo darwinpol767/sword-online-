@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://di0iorfd6iu1m"]
+
+[ext_resource type="Texture2D" uid="uid://bu34tp3to4sqy" path="res://kenney_shape-characters/kenney_new-platformer-pack-1.0/Sprites/Characters/Default/character_green_front.png" id="2_ln5ys"]
+
+[sub_resource type="GDScript" id="GDScript_hq15n"]
+script/source = "extends CharacterBody2D
+# 🔹 Estadísticas básicas (modificables)
+@export var health: int = 80
+@export var damage: int = 15
+@export var speed: float =  60.0
+@export var attack_range: float = 20.0
+@export var attack_speed: float = 1.0
+@export var team: int = 1   # 1 = jugador, -1 = enemigo
+
+# 🔹 Variables internas
+var target: Node = null
+var attack_timer: float = 0.0
+
+func _physics_process(delta: float) -> void:
+	if target and is_instance_valid(target):
+		attack_timer -= delta
+		if attack_timer <= 0:
+			attack()
+			attack_timer = 1.0 / attack_speed
+	else:
+		# Mover hacia la base enemiga
+		var direction = Vector2.RIGHT * team
+		velocity = direction * speed
+		move_and_slide()
+
+func attack():
+	if target and target.has_method(\"take_damage\"):
+		$AnimatedSprite2D.play(\"attack\")
+		target.take_damage(damage)
+
+func take_damage(amount: int) -> void:
+	health -= amount
+	if health <= 0:
+		die()
+
+func die():
+	$AnimatedSprite2D.play(\"die\")
+	queue_free()
+
+func _on_Area2D_body_entered(body: Node) -> void:
+	# Atacar enemigos o la base contraria
+	if body.is_in_group(\"units\") and body.team != team:
+		target = body
+	elif body.is_in_group(\"base\") and body.team != team:
+		target = body
+
+func _on_Area2D_body_exited(body: Node) -> void:
+	if body == target:
+		target = null"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1kbp0"]
+radius = 86.0523
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pu4ys"]
+size = Vector2(206, 104)
+
+[node name="Tanque" type="CharacterBody2D"]
+script = SubResource("GDScript_hq15n")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(139, 16)
+shape = SubResource("CircleShape2D_1kbp0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(139, 0)
+texture = ExtResource("2_ln5ys")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(209, 16)
+shape = SubResource("RectangleShape2D_pu4ys")

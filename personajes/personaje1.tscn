@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c56e0vyqkg6bw"]
+
+[ext_resource type="Texture2D" uid="uid://c86jehcpjy7yo" path="res://kenney_shape-characters/kenney_new-platformer-pack-1.0/Sprites/Characters/Default/character_beige_walk_b.png" id="1_5cknd"]
+[ext_resource type="Script" uid="uid://mbw8novmiifd" path="res://scripts/melee.gd" id="1_oin5a"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0e48y"]
+radius = 43.0
+height = 100.0
+
+[node name="personaje" type="CharacterBody2D"]
+script = ExtResource("1_oin5a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4, -19)
+texture = ExtResource("1_5cknd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -10)
+shape = SubResource("CapsuleShape2D_0e48y")

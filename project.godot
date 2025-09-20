@@ -10,9 +10,20 @@ config_version=5
 
 [application]
 
-config/name="primer juego 2"
+config/name="primer juego"
+config/description="jueguito"
+run/main_scene="res://personajes/pruebaDeHitbox.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[dotnet]
+
+project/assembly_name="primer juego"
+
+[global_group]
+
+"compañeros"="los buenos de la historia"
+enemigos="jpt enemigos"
 
 [rendering]
 

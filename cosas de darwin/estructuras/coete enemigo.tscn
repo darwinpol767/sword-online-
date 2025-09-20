@@ -1,6 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://cyt28d27x8jfn"]
+[gd_scene load_steps=20 format=3 uid="uid://cyt28d27x8jfn"]
 
-[ext_resource type="Texture2D" uid="uid://bkyw11j5o5t2x" path="res://kenney_shape-characters/PNG/Default/blue_body_circle.png" id="1_ys2d6"]
+[ext_resource type="Texture2D" uid="uid://86ps2m1wdmqo" path="res://kenney_shape-characters/PNG/Default/blue_body_circle.png" id="1_ys2d6"]
 [ext_resource type="Texture2D" uid="uid://cxgf3mr2xpdx8" path="res://kenney_platformer-art-requests/Tiles/tile_20.png" id="2_iyuyp"]
 [ext_resource type="Texture2D" uid="uid://bbdfprkruipuu" path="res://kenney_platformer-art-requests/Tiles/laserDown.png" id="3_5r3r1"]
 [ext_resource type="Texture2D" uid="uid://pk65ned1xkyw" path="res://kenney_new-platformer-pack-1.0/Vector/Tiles/flag_red_a.svg" id="4_37nfy"]
@@ -11,18 +11,55 @@
 [ext_resource type="Texture2D" uid="uid://c8essp4dt53q4" path="res://kenney_platformer-art-requests/Tiles/metalMid.png" id="9_o6ukf"]
 [ext_resource type="Texture2D" uid="uid://co2ttxifq6e0i" path="res://kenney_platformer-art-requests/Tiles/metalRight.png" id="10_v3q2y"]
 [ext_resource type="Texture2D" uid="uid://btxnt8e0jycrt" path="res://kenney_platformer-art-requests/Tiles/metalLeft.png" id="11_cusf4"]
-[ext_resource type="Texture2D" uid="uid://ogokinudbla3" path="res://kenney_shape-characters/PNG/Default/red_body_square.png" id="12_rf5uf"]
+[ext_resource type="Texture2D" uid="uid://bnxsq2bhni2lt" path="res://kenney_shape-characters/PNG/Default/red_body_square.png" id="12_rf5uf"]
 [ext_resource type="Texture2D" uid="uid://lqh8cif50lyw" path="res://kenney_platformer-art-requests/Tiles/metal.png" id="13_021qu"]
 [ext_resource type="Texture2D" uid="uid://dmjrljk14l5gv" path="res://kenney_platformer-art-requests/Tiles/tile_21.png" id="14_66goj"]
-[ext_resource type="Texture2D" uid="uid://bmtosfu0ekfc8" path="res://kenney_shape-characters/PNG/Default/red_body_rhombus.png" id="15_igrhl"]
+[ext_resource type="Texture2D" uid="uid://c00c65ncogff0" path="res://kenney_shape-characters/PNG/Default/red_body_rhombus.png" id="15_igrhl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fm70c"]
-size = Vector2(338, 555)
+size = Vector2(345, 580.5)
+
+[sub_resource type="Animation" id="Animation_ipktp"]
+resource_name = "destruccion"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.333333, 0.533333, 0.666667, 0.9, 1.06667, 1.33333, 1.56667, 1.86667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 12), Vector2(-47, 14), Vector2(71, 23), Vector2(-79, 25), Vector2(125, 27), Vector2(-115, 53), Vector2(74, 109), Vector2(-123, 124), Vector2(-13, 214), Vector2(-11, 325), Vector2(-11, 424)]
+}
+
+[sub_resource type="Animation" id="Animation_5hls7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4sm08"]
+_data = {
+&"RESET": SubResource("Animation_5hls7"),
+&"destruccion": SubResource("Animation_ipktp")
+}
 
 [node name="coeteenemigo" type="Node2D"]
 
 [node name="BlueBodyCircle" type="Sprite2D" parent="."]
-position = Vector2(2, 0)
+position = Vector2(2, 12)
 texture = ExtResource("1_ys2d6")
 
 [node name="Tile20" type="Sprite2D" parent="BlueBodyCircle"]
@@ -114,7 +151,7 @@ position = Vector2(67, 140)
 texture = ExtResource("10_v3q2y")
 
 [node name="MetalLeft" type="Sprite2D" parent="BlueBodyCircle"]
-position = Vector2(-72, 1)
+position = Vector2(-70, 1)
 texture = ExtResource("11_cusf4")
 
 [node name="RedBodySquare2" type="Sprite2D" parent="BlueBodyCircle"]
@@ -164,8 +201,14 @@ position = Vector2(68, 0)
 texture = ExtResource("10_v3q2y")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="BlueBodyCircle"]
-position = Vector2(-2, 0)
+position = Vector2(25, 19)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlueBodyCircle/StaticBody2D"]
-position = Vector2(1, 5.5)
+visible = false
+position = Vector2(-22.5, 3.75)
 shape = SubResource("RectangleShape2D_fm70c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BlueBodyCircle"]
+libraries = {
+&"": SubResource("AnimationLibrary_4sm08")
+}
